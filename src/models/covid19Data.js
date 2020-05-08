@@ -1,4 +1,5 @@
 import dataFetcher from '../covid19DataFetcher/dataFetcher';
+import he from 'he';
 
 class data {
     constructor({confirmed, deths, recovered, active, date}){
@@ -30,22 +31,19 @@ class data {
         return this._date;
     };
 
-    static async fetchAndCreateCovid19Data(){
-        const covid19 = await dataFetcher.fetch();
-        
-        return data.createInstance( covid19 );
-    }
-
     static createInstance( dataList ){
         return dataList.map( covid19Data => {
             return{
-                confirmed: he.decode( covid19Data.Confirmed ),
-                deths: he.decode( covid19Data.Deaths ),
-                recovered: he.decode( covid19Data.Recovered ),
-                active: he.decode( covid19Data.Active ),
-                date: he.decode( covid19Data.Date )
+                confirmed: covid19Data.Confirmed,
+                deths: covid19Data.Deaths,
+                recovered: covid19Data.Recovered,
+                active: covid19Data.Active,
+                date: covid19Data.Date
             }
-        });
+        })
+        .map( covid19Data => {
+           return new data( covid19Data );
+        })
     };
 };
 

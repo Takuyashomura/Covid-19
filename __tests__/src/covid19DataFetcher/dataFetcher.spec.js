@@ -9,7 +9,6 @@ describe('dataFetcherのテスト', () => {
 describe('covid19データテスト', () => {
     it('covid19のデータがカテゴリ別で手に入る', async () => {
         const data = await dataFetcher.fetch();
-
         expect( Array.isArray( data )).toStrictEqual(true);
         data.forEach( covidData => {
             expect( typeof covidData.Country ).toStrictEqual('string');

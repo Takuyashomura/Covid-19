@@ -12,9 +12,8 @@ export const fetchData = () => {
         dispatch( fetchDataRequest() );
         try{
             const response = await axios.get(API_URL);
-            const result = response.data;
-            const data = dataModel.fetchAndCreateCovid19Data( result );
-
+            const results = response.data;
+            const data = dataModel.createInstance( results );
             dispatch( fetchDataSucces( data ) );
         } catch ( error ){
             dispatch( fetchDataFailur( error ) );

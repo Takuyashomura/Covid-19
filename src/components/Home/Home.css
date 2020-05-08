@@ -1,0 +1,15 @@
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+.container{
+    border: solid 1px;
+    width: 50%;
+    margin: 10px auto;
+
+}
+p{
+    font-size: 20px;
+}
