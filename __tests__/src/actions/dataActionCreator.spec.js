@@ -21,7 +21,7 @@ describe('dataActionCreatorのテスト', () => {
 
         axios.get.mockResolvedValue({
             data:{
-                results: expectedResults
+                result: expectedResults
             }
         });
 
@@ -33,7 +33,7 @@ describe('dataActionCreatorのテスト', () => {
         },
         {
             type: FETCH_DATA_SUCCES,
-            data: dataModel.fetchAndCreateCovid19Data( expectedResults )
+            data: dataModel.createInstance( expectedResults )
         }
         )];
     });
